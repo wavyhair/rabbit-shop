@@ -13,7 +13,7 @@
           >
         </template>
         <!-- 骨架 start -->
-        <template v-else> 
+        <template v-else>
           <XtxSkeleton width="60px" height="18px" bg="rgba(255,255,255,.2)" style="margin-right:5px" />
           <XtxSkeleton width="50px" height="18px"  bg="rgba(255,255,255,.2)" />
         </template>
@@ -103,7 +103,6 @@ import { findBrand } from "@/api/home";
     // 获取品牌数据
     findBrand().then(data => {
       brand.brands = data.result;
-      console.log("brand.brands", brand.brands);
     });
 </script>
 

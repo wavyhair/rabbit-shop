@@ -31,7 +31,6 @@ import {findSpecial}from '@/api/home'
 import HomeSkeleton from "./home-skeleton.vue";
 import { useLazyData } from '@/hooks';
 const {target:homeSpecial,result:goods} = useLazyData(findSpecial)
-console.log('goods',goods);
 </script>
 
 <style scoped lang='less'>
