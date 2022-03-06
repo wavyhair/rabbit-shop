@@ -1,20 +1,18 @@
 <template>
   <div class="home-banner">
-    <XtxCarousel :sliders="sliders" auto-play />
+    <XtxCarousel :sliders="sliders.data" auto-play />
   </div>
 </template>
 
 <script setup>
-import {  ref, onBeforeMount, onMounted } from "vue";
+import {  reactive } from "vue";
 import { findBanner } from "@/api/home";
-    const sliders = ref([]);
+    let sliders = reactive({data:[]});
     // 获取轮播图数据
     findBanner().then(data => {
-      sliders.value = data.result;
+      sliders.data = data.result;
     });
-    onBeforeMount(() => {});
-    onMounted(() => {});
-   
+
 </script>
 <style scoped lang="less">
 .home-banner {

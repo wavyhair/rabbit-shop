@@ -16,8 +16,8 @@ import defaultImg from "@/assets/images/200.png";
  * 它有一个属性 `keys()` 获取所有文件路径
  * 通过文件路径数组，通过遍历数组，再使用 `importFn` 根据路径导入组件对象
  * 遍历的同时进行全局注册即可
- * 
- * context(目录路径、是否加载子目录、加载文件的匹配正则) 
+ *
+ * context(目录路径、是否加载子目录、加载文件的匹配正则)
  */
  const importFn = require.context('./',false,/\.vue$/)
 export default {
@@ -45,7 +45,7 @@ const defineDirective = app => {
   // 原理：先存储图片地址不能在 src 上，当图片进去可视区，将你存储图片地址设置给图片元素即可。
   app.directive("lazy", {
     // vue2.0 监听使用指令的 DOM 是否创建好 钩子函数是:interted
-    // vue3.0 的指令拥有的狗子函数和组件的一样 使用指令的 DOM 是否创建好 钩子函数 mounted
+    // vue3.0 的指令拥有的钩子函数和组件的一样 使用指令的 DOM 是否创建好 钩子函数 mounted
     mounted(el, binding) {
       // 创建一个观察对象 来观察当前使用指令的元素
       const obsever = new IntersectionObserver(
