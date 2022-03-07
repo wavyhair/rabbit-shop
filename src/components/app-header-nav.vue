@@ -1,7 +1,7 @@
 <template>
   <ul class="app-header-nav">
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
-    <li v-for="i in list" :key="i.id" @mouseenter="show(i)" @mouseleave="hide(i)">
+    <li v-for="i in list" :key="i.id" @mousemove="show(i)" @mouseleave="hide(i)">
       <router-link :to="`/category/${i.id}`" @click="hide(i)">{{ i.name }}</router-link>
       <div class="layer" :class="{open:i.open}">
         <ul>

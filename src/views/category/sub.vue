@@ -1,9 +1,12 @@
 <template>
-  <div>Sub-Category</div>
+<div class='sub-category'>
+    <div class="container">
+      <!-- 面包屑 -->
+      <SubBread />
+    </div>
+  </div>
 </template>
-<script>
-export default {
-  name: 'SubCategory'
-}
+<script setup>
+import SubBread from './sub-bread.vue'
 </script>
 <style scoped lang="less"></style>

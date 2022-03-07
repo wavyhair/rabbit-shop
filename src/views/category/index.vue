@@ -75,9 +75,11 @@ const getSubList = () => {
   findTopCategory(route.params.id).then(data => {
     subList.data = data.result.children
   })
-}
+} 
 watch(()=>route.params.id,(newId)=>{
-  newId&&getSubList()
+  // 加上一个严谨判断 有 id 并且在一集类目下发请求
+  // 有 id，并且路径拼接等于地址栏路径才发请求，防止二级类目也发请求的问题
+  if(newId&&`/category/${newId}`===route.path)getSubList()
 },{immediate:true})
 
 </script>

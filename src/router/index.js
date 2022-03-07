@@ -21,7 +21,11 @@ const routes = [
 const router = createRouter({
   // 使用 hash 方式实现路由
   history: createWebHashHistory(),
-  routes
+  routes,
+  // 每次切换路由的时候滚动到页面顶部
+  scrollBehavior (to, from, savedPosition) {
+    return {top:0,left:0}
+  }
 });
 
 export default router;
