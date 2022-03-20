@@ -3,10 +3,13 @@
     <div class="container">
       <!-- 面包屑 -->
       <SubBread />
+      <!-- 筛选区 -->
+      <SubFilter />
     </div>
   </div>
 </template>
 <script setup>
 import SubBread from './sub-bread.vue'
+import SubFilter from './sub-filter.vue'
 </script>
 <style scoped lang="less"></style>

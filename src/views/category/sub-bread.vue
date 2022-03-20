@@ -1,9 +1,9 @@
 <template>
     <XtxBread>
         <XtxBreadItem to="/">首页</XtxBreadItem>
-        <XtxBreadItem :to="`/category/${category.top.id}`">{{category.top.name}}</XtxBreadItem>
+        <XtxBreadItem v-if="category.top" :to="`/category/${category.top.id}`">{{category.top.name}}</XtxBreadItem>
         <Transition name="fade-right" mode="out-in">
-        <XtxBreadItem :key="category.sub.id" :to="`/category/${category.sub.id}`">{{category.sub.name}}</XtxBreadItem>
+        <XtxBreadItem  v-if="category.sub" :key="category.sub.id" :to="`/category/${category.sub.id}`">{{category.sub.name}}</XtxBreadItem>
         </Transition>
     </XtxBread>
 </template>
@@ -20,7 +20,7 @@ const store = useStore()
 const category = computed(()=>{
     const obj = {}
     store.state.category.list.forEach(top=>{
-        top.children&&top.children.forEach(sub=>{
+        top.children?.forEach(sub=>{
             if(sub.id===route.params.id){
                 // 设置二级类目
                 obj.sub = {name:sub.name,id:sub.id}
