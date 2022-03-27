@@ -28,7 +28,6 @@ export default {
       const component = importFn(path).default
       // 进行注册
       app.component(component.name,component)
-
     })
     // 在 app 上进行扩展，app 提供 component  directive
     // 如果要挂载原型   app.config.globalProperties.$http 方式

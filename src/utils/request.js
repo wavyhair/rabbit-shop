@@ -47,12 +47,12 @@ instance.interceptors.response.use(
 );
 
 // 请求工具函数
-export default (url,mathod,submitData) => {
+export default (url,method,submitData) => {
     return instance({
         url,
-        mathod,
+        method,
           // 1. 如果是 get 请求  需要使用 params 来传递 submitData   ?a=10&c=10
     // 2. 如果不是 get 请求  需要使用 data 来传递submitData   请求体传参
-        [mathod.toLowerCase()==='get'?'params':'data']:submitData
+        [method.toLowerCase()==='get'?'params':'data']:submitData
     })
 }
