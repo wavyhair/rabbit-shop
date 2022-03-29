@@ -13,7 +13,7 @@ export default {
 <script setup>
 import { useVModel } from "@vueuse/core";
 import {  defineProps, defineEmits } from "vue";
-const emit = defineEmits(["update:modelValue"]);
+const emits = defineEmits(["change"]);
 
 const props = defineProps({
   modelValue: {
@@ -41,11 +41,13 @@ const props = defineProps({
     // 2. 使用useVModel来包装props中的modelValue属性数据
     // 3. 在使用checked.value就是使用父组件数据
     // 4. 在使用checked.value = '数据' 赋值，触发emit('update:modelvalue', '数据')
-const checked = useVModel(props,'modelValue',emit)
+const checked = useVModel(props,'modelValue',emits)
 const changeChecked=()=>{
     const newValue = !checked.value
     // 通知父组件
     checked.value = newValue
+    // 让组件支持 change 事件
+    emits('change',newValue)
 }
 </script>
 <style scoped lang="less">

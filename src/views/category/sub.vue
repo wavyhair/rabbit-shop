@@ -4,11 +4,11 @@
       <!-- 面包屑 -->
       <SubBread />
       <!-- 筛选区 -->
-      <SubFilter />
+      <SubFilter @filter-change="filterChange" />
       <!--    结果区域-->
       <div class="goods-list">
         <!--        排序-->
-        <SubSort />
+        <SubSort @filter-change="sortChange" />
         <!--        列表-->
         <ul>
           <li v-for="item in goodsList" :key="item.id">
@@ -68,6 +68,24 @@ watch(() => route.params.id, (newVal) => {
     finished.value = false
   }
 })
+// 更改筛选数组的筛选数据 
+const filterChange = (filterParams) => {
+  changeSequence(filterParams)
+}
+// 排序改变 
+const sortChange = (filterParams) => {
+  changeSequence(filterParams)
+}
+// 改变排序
+const changeSequence = (filterParams) => {
+  finished.value = false
+  //  合并请求参数，保留之前参数
+  reqParams = { ...reqParams, ...filterParams }
+  reqParams.page = 1
+  goodsList.value = []
+  getData()
+
+}
 </script>
 <style scoped lang="less">
 .goods-list {
