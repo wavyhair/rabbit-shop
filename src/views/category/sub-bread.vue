@@ -9,6 +9,7 @@
 </template>
 
 <script setup>
+import XtxBreadItem from "@/components/library/xtx-bread-item.vue"
 import {computed}from'vue'
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
