@@ -1,18 +1,27 @@
 <template>
     <div class="xtx-goods-page" >
         <div class="container">
-            <!-- 面包屑 -->
+            <!-- 面包屑 s -->
             <XtxBread>
                 <XtxBreadItem to="/">首页</XtxBreadItem>
                 <XtxBreadItem v-if="goods" :to="'/category/'+goods.categories[1].id">{{goods.categories[1].name}}</XtxBreadItem>
                 <XtxBreadItem v-if="goods" :to="'/category/sub/'+goods.categories[0].id">{{goods.categories[0].name}}</XtxBreadItem>
                 <XtxBreadItem v-if="goods" >{{goods.name}}</XtxBreadItem>
             </XtxBread>
-            <!-- 商品信息 -->
-            <div class="goods-info"></div>
-            <!-- 商品推荐 -->
+            <!-- 面包屑 e -->
+            <!-- 商品信息 s -->
+            <div class="goods-info" v-if="goods">
+                <div class="media">
+                    <GoodsImage :images="goods.mainPictures" />
+                </div>
+                <div class="spec"></div>
+            </div>
+            <!-- 商品信息 e -->
+            <!-- 商品推荐  s -->
             <GoodsRelevant />
-            <!-- 商品详情 -->
+            <!-- 商品推荐  e -->
+
+            <!-- 商品详情 s -->
             <div class="goods-footer">
                 <div class="goods-article">
                     <!-- 商品+评价 -->
@@ -23,6 +32,7 @@
                 <!-- 24热榜+专题推荐 -->
                 <div class="goods-aside"></div>
             </div>
+            <!-- 商品详情 e -->
         </div>
     </div>
 </template>
@@ -34,6 +44,7 @@ import XtxBreadItem from "@/components/library/xtx-bread-item.vue"
 import { findGoods } from '@/api/product';
 import { ref, nextTick,watch } from 'vue';
 import { useRoute } from 'vue-router';
+import GoodsImage from './components/goods-image.vue';
 // 获取商品详情
 const useGoods = () => {
     // 出现路由地址商品 id 发生变化，但是不会重新初始化组件
@@ -59,8 +70,18 @@ const goods = useGoods()
 
 <style scoped lang='less'>
 .goods-info {
-    min-height: 600px;
-    background: #fff;
+  min-height: 600px;
+  background: #fff;
+  display: flex;
+  .media {
+    width: 580px;
+    height: 600px;
+    padding: 30px 50px;
+  }
+  .spec {
+    flex: 1;
+    padding: 30px 30px 30px 0;
+  }
 }
 .goods-footer {
     display: flex;
