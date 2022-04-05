@@ -13,8 +13,11 @@
             <div class="goods-info" v-if="goods">
                 <div class="media">
                     <GoodsImage :images="goods.mainPictures" />
+                    <GoodsSales/>
                 </div>
-                <div class="spec"></div>
+                <div class="spec">
+                    <GoodsName :goods="goods"/>
+                </div>
             </div>
             <!-- 商品信息 e -->
             <!-- 商品推荐  s -->
@@ -45,6 +48,8 @@ import { findGoods } from '@/api/product';
 import { ref, nextTick,watch } from 'vue';
 import { useRoute } from 'vue-router';
 import GoodsImage from './components/goods-image.vue';
+import GoodsName from './components/goods-name.vue';
+import GoodsSales from './components/goods-sales.vue';
 // 获取商品详情
 const useGoods = () => {
     // 出现路由地址商品 id 发生变化，但是不会重新初始化组件

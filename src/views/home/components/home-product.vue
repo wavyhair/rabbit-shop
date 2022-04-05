@@ -8,7 +8,7 @@
         <XtxMore />
       </template>
       <div class="box">
-        <RouterLink class="cover" to="/">
+        <RouterLink class="cover" :to="`/category/${i.id}`">
           <img v-lazy="i.picture" alt="">
           <strong class="label">
             <span>{{i.name}}馆</span>
