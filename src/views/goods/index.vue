@@ -16,13 +16,15 @@
                     <GoodsSales/>
                 </div>
                 <div class="spec">
+                    <!-- 区域组件 -->
                     <GoodsName :goods="goods"/>
+                    <!-- 规格组件 -->
+                    <GoodsSku :goods="goods"/>
                 </div>
             </div>
             <!-- 商品信息 e -->
-            <!-- 商品推荐  s -->
+            <!-- 商品组件  s -->
             <GoodsRelevant />
-            <!-- 商品推荐  e -->
 
             <!-- 商品详情 s -->
             <div class="goods-footer">
@@ -50,6 +52,7 @@ import { useRoute } from 'vue-router';
 import GoodsImage from './components/goods-image.vue';
 import GoodsName from './components/goods-name.vue';
 import GoodsSales from './components/goods-sales.vue';
+import GoodsSku from './components/goods-sku.vue';
 // 获取商品详情
 const useGoods = () => {
     // 出现路由地址商品 id 发生变化，但是不会重新初始化组件
