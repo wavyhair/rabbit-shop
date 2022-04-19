@@ -1,9 +1,9 @@
 <template>
-  <p class="g-name">2件装 粉釉花瓣心意点缀 点心盘*2 碟子盘子</p>
-  <p class="g-desc">花瓣造型干净简约 多功能使用堆叠方便</p>
+  <p class="g-name">{{goods.name}}</p>
+  <p class="g-desc">{{goods.desc}}</p>
   <p class="g-price">
-    <span>108.00</span>
-    <span>199.00</span>
+    <span>{{goods.price}}</span>
+    <span>{{goods.oldOrice|| Number(goods.price)+20 }}</span>
   </p>
   <div class="g-service">
     <dl>

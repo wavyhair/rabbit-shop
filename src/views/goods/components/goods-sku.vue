@@ -2,7 +2,7 @@
  * @Author: chenjie
  * @Date: 2022-04-06 21:44:04
  * @LastEditors: chenjie
- * @LastEditTime: 2022-04-14 23:21:14
+ * @LastEditTime: 2022-04-19 20:12:51
  * @FilePath: \rabbit-shop\src\views\goods\components\goods-sku.vue
  * @Description: 
  * 
@@ -37,8 +37,13 @@ const props = defineProps({
             specs: [],
             skus: []
         })
+    },
+    skuId: {
+        type: String,
+        default: ''
     }
 })
+const emits = defineEmits(['change'])
 
 const spliter = '☆'
 // 根据 skus 数据得到路径字典对象
@@ -104,17 +109,48 @@ const clickSpecs = (item, val) => {
         })
         val.selected = true
         updateDisabledStatus(props.goods.specs, pathMap)
+        // 触发 change 事件将 sku 数据传递出去
+        const selectedArr = getSelectedValues(props.goods.specs).filter(v => v)
+        if (selectedArr.length === props.goods.specs.length) {
+            const skuIds = pathMap[selectedArr.join(spliter)]
+            const sku = props.goods.skus.find(sku => sku.id === skuIds[0])
+            // 传递
+            emits('change', {
+                skuId: sku.id,
+                price: sku.price,
+                oldOrice: sku.oldOrice,
+                inventory: sku.inventory,
+                 specsText: sku.specs.reduce((p,n)=>
+                     `${p} ${n.name}:${n.valueName}`,'').replace(' ','')
+            })
+        } else {
+            emits('change', {})
+        }
     }
 }
+
+const initSelectedStatus = (goods, skuId) => {
+    const sku = goods.skus.find(sku => sku.id === skuId)
+    if (sku) {
+        goods.specs.forEach((spec, i) => {
+            const value = sku.specs[i].valueName
+            spec.values.forEach(val => {
+                val.selected = val.name === value
+            })
+        })
+    }
+}
+
 // 设置一些没有库存的sku 方便测试功能
 props.goods.skus.forEach(item => {
-    if (['300411718','300411719','300477367','300477368','300411723'].includes(item.id)) {
+    if (['300411718', '300411719', '300477367', '300477368', '300411723'].includes(item.id)) {
         item.inventory = 0
     }
 })
 getPathMap(props.goods.skus)
 
 updateDisabledStatus(props.goods.specs, pathMap)
+initSelectedStatus(props.goods, props.skuId)
 
 </script>
 <style scoped lang="less">
