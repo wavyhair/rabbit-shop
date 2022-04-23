@@ -27,12 +27,12 @@
           <!-- 数量组件 -->
           <XtxNumbox label="数量" v-model="num" :max="goods.inventory" />
           <!--  按钮组件 -->
-          <XtxButton class="xtx-button" type="primary"  >加入购物车</XtxButton>
+          <XtxButton class="xtx-button" type="primary">加入购物车</XtxButton>
         </div>
       </div>
       <!-- 商品信息 e -->
       <!-- 商品组件  s -->
-      <GoodsRelevant />
+      <GoodsRelevant v-if="goods" :goodsId="goods.id"/>
 
       <!-- 商品详情 s -->
       <div class="goods-footer">
@@ -61,9 +61,9 @@ import GoodsImage from "./components/goods-image.vue"
 import GoodsName from "./components/goods-name.vue"
 import GoodsSales from "./components/goods-sales.vue"
 import GoodsSku from "./components/goods-sku.vue"
-import XtxNumbox from "@/components/library/xtx-numbox.vue"
 
 const skuId = ref(undefined)
+
 // 获取商品详情
 const useGoods = () => {
   // 出现路由地址商品 id 发生变化，但是不会重新初始化组件
@@ -96,7 +96,7 @@ const changeSku = (sku) => {
 // 数量变化事件
 const num = ref(1)
 const changeNum = (val => {
-  console.log(val)
+
 })
 
 const goods = useGoods()
@@ -147,6 +147,7 @@ const goods = useGoods()
   background: #fff;
   margin-top: 20px;
 }
+
 .xtx-button {
   margin-top: 20px;
 }
