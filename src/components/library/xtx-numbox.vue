@@ -46,8 +46,7 @@ const num = useVModel(props, 'modelValue', emits)
 // 加减按钮事件
 const changeNum = (val => {
     const newValue = num.value + val
-    if(newValue<props.min)return
-    if(newValue>props.max)return
+    if(newValue<props.min||newValue>props.max)return
     num.value = newValue
     emits('change',newValue)
 })
