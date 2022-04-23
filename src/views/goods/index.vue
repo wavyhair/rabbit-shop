@@ -24,6 +24,8 @@
                     <GoodsName :goods="goods" />
                     <!-- 规格组件 -->
                     <GoodsSku :goods="goods" :sku-id="skuId" @change="changeSku" />
+                    <!-- 数量组件 -->
+                    <XtxNumbox label="数量" v-model="num" :max="goods.inventory"/>
                 </div>
             </div>
             <!-- 商品信息 e -->
@@ -57,6 +59,7 @@ import GoodsImage from './components/goods-image.vue';
 import GoodsName from './components/goods-name.vue';
 import GoodsSales from './components/goods-sales.vue';
 import GoodsSku from './components/goods-sku.vue';
+import XtxNumbox from '@/components/library/xtx-numbox.vue';
 
 const skuId = ref(undefined)
 // 获取商品详情
@@ -79,15 +82,20 @@ const useGoods = () => {
     }, { immediate: true })
     return goods
 }
+// sku 变化
 const changeSku = (sku) => {
-
     if (sku.skuId) {
-        console.log(goods);
         goods.value.price = sku.price
         goods.value.oldPrice = sku.oldPrice
         goods.value.inventory = sku.inventory
     }
 }
+
+// 数量变化事件
+const num = ref(1)
+const changeNum =(val=>{
+    console.log(val);
+})
 
 const goods = useGoods()
 

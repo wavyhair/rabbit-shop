@@ -1,3 +1,13 @@
+<!--
+ * @Author: chenjie
+ * @Date: 2022-03-06 21:42:55
+ * @LastEditors: chenjie
+ * @LastEditTime: 2022-04-22 19:43:01
+ * @FilePath: \rabbit-shop\src\views\home\components\home-banner.vue
+ * @Description: 
+ * 
+ * Copyright (c) 2022 by chenjie, All Rights Reserved. 
+-->
 <template>
   <div class="home-banner">
     <XtxCarousel :sliders="sliders.data" auto-play />
@@ -24,10 +34,10 @@ import { findBanner } from "@/api/home";
   z-index: 98;
 }
 .xtx-carousel {
-  ::v-deep .carousel-btn.prev {
+  :v-deep(.carousel-btn.prev)  {
     left: 270px;
   }
-  ::v-deep .carousel-indicator {
+  :v-deep (.carousel-indicator) {
     padding-left: 250px;
   }
 }

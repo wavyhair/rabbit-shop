@@ -2518,9 +2518,9 @@
     "lodash.uniq" "^4.5.0"
 
 "caniuse-lite@^1.0.0", "caniuse-lite@^1.0.30001109", "caniuse-lite@^1.0.30001248":
-  "integrity" "sha1-aFOmBuxQiTEV22YPgsCU0Y8JbYU="
-  "resolved" "https://registry.nlark.com/caniuse-lite/download/caniuse-lite-1.0.30001251.tgz"
-  "version" "1.0.30001251"
+  "integrity" "sha512-10T30NYOEQtN6C11YGg411yebhvpnC6Z102+B95eAsN0oB6KUs01ivE8u+G6FMIRtIrVlYXhL+LUwQ3/hXwDWw=="
+  "resolved" "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001332.tgz"
+  "version" "1.0.30001332"
 
 "case-sensitive-paths-webpack-plugin@^2.3.0":
   "integrity" "sha1-22QGbGQi7tLgjMFLmGykN5bbxtQ="
