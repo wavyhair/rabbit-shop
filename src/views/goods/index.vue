@@ -1,16 +1,16 @@
 <template>
   <div class="xtx-goods-page">
-    <div class="container">
+    <div class="container" v-if="goods">
       <!-- 面包屑 s -->
       <XtxBread>
         <XtxBreadItem to="/">首页</XtxBreadItem>
-        <XtxBreadItem v-if="goods" :to="'/category/' + goods.categories[1].id">{{ goods.categories[1].name }}
+        <XtxBreadItem  :to="'/category/' + goods.categories[1].id">{{ goods.categories[1].name }}
         </XtxBreadItem>
-        <XtxBreadItem v-if="goods" :to="'/category/sub/' + goods.categories[0].id">{{
+        <XtxBreadItem  :to="'/category/sub/' + goods.categories[0].id">{{
             goods.categories[0].name
           }}
         </XtxBreadItem>
-        <XtxBreadItem v-if="goods">{{ goods.name }}</XtxBreadItem>
+        <XtxBreadItem >{{ goods.name }}</XtxBreadItem>
       </XtxBread>
       <!-- 面包屑 e -->
       <!-- 商品信息 s -->
@@ -32,18 +32,21 @@
       </div>
       <!-- 商品信息 e -->
       <!-- 商品组件  s -->
-      <GoodsRelevant v-if="goods" :goodsId="goods.id"/>
+      <GoodsRelevant  :goodsId="goods.id"/>
 
       <!-- 商品详情 s -->
       <div class="goods-footer">
         <div class="goods-article">
           <!-- 商品+评价 -->
-          <div class="goods-tabs"></div>
+          <GoodsTabs />
           <!-- 注意事项 -->
           <div class="goods-warn"></div>
         </div>
         <!-- 24热榜+专题推荐 -->
-        <div class="goods-aside"></div>
+        <div class="goods-aside">
+          <GoodsHot :goods-id="goods.id" :type="1"/>
+          <GoodsHot :goods-id="goods.id" :type="2"/>
+        </div>
       </div>
       <!-- 商品详情 e -->
     </div>
@@ -61,6 +64,8 @@ import GoodsImage from "./components/goods-image.vue"
 import GoodsName from "./components/goods-name.vue"
 import GoodsSales from "./components/goods-sales.vue"
 import GoodsSku from "./components/goods-sku.vue"
+import GoodsTabs from "@/views/goods/components/goods-tabs"
+import GoodsHot from "@/views/goods/components/goods-hot"
 
 const skuId = ref(undefined)
 
@@ -137,10 +142,6 @@ const goods = useGoods()
   }
 }
 
-.goods-tabs {
-  min-height: 600px;
-  background: #fff;
-}
 
 .goods-warn {
   min-height: 600px;

@@ -16,3 +16,14 @@ import request from "@/utils/request";
 export const findRelGoods=(id,limit=16)=>{
   return request('/goods/relevant','get',{id,limit})
 }
+/**
+ * 获取热榜商品
+ * @param {String} id 商品 id
+ * @param {Number} limit 获取条数
+ * @param {Number} type 1 代表 24 小时热榜 2 代表周热销榜 3 代表总热销榜
+ * @returns {*|AxiosPromise}
+ */
+export const findHotGoods=(id,type,limit=3)=>{
+  return request('/goods/hot','get',{id,type,limit})
+}
+
