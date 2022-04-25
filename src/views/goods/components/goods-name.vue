@@ -34,8 +34,8 @@
 import { ref } from 'vue'
 const props = defineProps({
   goods: {
-    type: Array,
-    default: () => []
+    type: Object,
+    default: () => {}
   }
 })
 // 默认情况

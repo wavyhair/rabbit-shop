@@ -13,7 +13,7 @@
     <nav>
       <a :class="{active:activeName==='detali'}" @click="clickTab('detali')" href="javascript:;">商品详情</a>
       <a :class="{active:activeName==='comment'}" @click="clickTab('comment')"
-         href="javascript:;">商品评价<span>(500+)</span></a>
+         href="javascript:;">商品评价<span>({{goods.commentCount}})</span></a>
     </nav>
     <!-- 切换内容的地方 -->
     <component :is="'goods-'+activeName" />
@@ -34,11 +34,12 @@ export default {
 
 
 <script setup>
-import { ref } from "vue"
+import { ref,inject } from "vue"
 const activeName = ref("detali")
 const clickTab = (name => {
   activeName.value = name
 })
+const goods = inject('goods')
 </script>
 
 

@@ -40,7 +40,7 @@
           <!-- 商品+评价 -->
           <GoodsTabs />
           <!-- 注意事项 -->
-          <div class="goods-warn"></div>
+          <GoodsWarn/>
         </div>
         <!-- 24热榜+专题推荐 -->
         <div class="goods-aside">
@@ -58,7 +58,7 @@ import GoodsRelevant from "./components/goods-relevant"
 import XtxBreadItem from "@/components/library/xtx-bread-item.vue"
 
 import { findGoods } from "@/api/product"
-import { ref, nextTick, watch } from "vue"
+import { ref, nextTick, watch,provide } from "vue"
 import { useRoute } from "vue-router"
 import GoodsImage from "./components/goods-image.vue"
 import GoodsName from "./components/goods-name.vue"
@@ -66,6 +66,7 @@ import GoodsSales from "./components/goods-sales.vue"
 import GoodsSku from "./components/goods-sku.vue"
 import GoodsTabs from "@/views/goods/components/goods-tabs"
 import GoodsHot from "@/views/goods/components/goods-hot"
+import GoodsWarn from "@/views/goods/components/goods-warn"
 
 const skuId = ref(undefined)
 
@@ -105,6 +106,7 @@ const changeNum = (val => {
 })
 
 const goods = useGoods()
+provide('goods',goods)
 
 
 </script>
