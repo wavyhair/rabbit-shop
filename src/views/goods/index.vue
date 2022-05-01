@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-01 17:43:56
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-01 17:43:56
+ * @Description: desc
+ */
 <template>
   <div class="xtx-goods-page">
     <div class="container" v-if="goods">
@@ -40,7 +47,7 @@
           <!-- 商品+评价 -->
           <GoodsTabs />
           <!-- 注意事项 -->
-          <GoodsWarn/>
+          <GoodsWarn />
         </div>
         <!-- 24热榜+专题推荐 -->
         <div class="goods-aside">
@@ -55,7 +62,6 @@
 
 <script setup>
 import GoodsRelevant from "./components/goods-relevant"
-import XtxBreadItem from "@/components/library/xtx-bread-item.vue"
 
 import { findGoods } from "@/api/product"
 import { ref, nextTick, watch,provide } from "vue"

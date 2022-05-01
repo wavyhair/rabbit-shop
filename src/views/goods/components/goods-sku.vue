@@ -1,12 +1,11 @@
 <!--
  * @Author: chenjie
  * @Date: 2022-04-06 21:44:04
- * @LastEditors: chenjie
- * @LastEditTime: 2022-04-19 20:12:51
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-04-30 21:43:46
  * @FilePath: \rabbit-shop\src\views\goods\components\goods-sku.vue
- * @Description: 
- * 
- * Copyright (c) 2022 by chenjie, All Rights Reserved. 
+ * @Description:
+ *
 -->
 
 <template>

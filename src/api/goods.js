@@ -1,10 +1,11 @@
 /*
- * @Description: file content
- * @path: src\api\goods.js
- * @Autor:jie
- * @LastEditors: jie
- * @Time: 2022-04-23 20:25:51
+ * @Author: jiea
+ * @Date: 2022-05-01 12:45:53
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-01 22:55:59
+ * @Description: 商品信息接口
  */
+
 import request from "@/utils/request";
 
 /**
@@ -27,3 +28,23 @@ export const findHotGoods=(id,type,limit=3)=>{
   return request('/goods/hot','get',{id,type,limit})
 }
 
+/**
+ * 获取商品的评价统计信息
+ * @param id 商品 id
+ * @returns {*}
+ */
+export const findCommentInfoByGoods = (id) => {
+  // return request(`/goods/${id}/evaluate`)
+//  axios 遇见 http https 开头的地址 不会加上基准地址
+  return request(`https://mock.boxuegu.com/mock/1175/goods/${id}/evaluate`, 'get')
+}
+
+/**
+ *
+ * @param id 商品 id
+ * @param params 评论选项
+ * @returns {*}
+ */
+export const findGoodsCommentList = (id,params)=>{
+  return request('https://mock.boxuegu.com/mock/1175/goods/${id}/evaluate/page','get',params)
+}

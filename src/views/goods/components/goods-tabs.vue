@@ -1,4 +1,11 @@
 /*
+ * @Author: jiea
+ * @Date: 2022-05-01 17:45:14
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-01 17:47:18
+ * @Description: desc
+ */
+/*
 * @Description: file content
 * @path: src/views/goods/components
 * @Autor:Huhuuuu
@@ -16,7 +23,7 @@
          href="javascript:;">商品评价<span>({{goods.commentCount}})</span></a>
     </nav>
     <!-- 切换内容的地方 -->
-    <component :is="'goods-'+activeName" />
+    <component v-if="goods" :is="'goods-'+activeName" :goods="goods"/>
   </div>
 </template>
 

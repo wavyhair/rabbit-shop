@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-01 09:58:27
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-01 09:58:27
+ * @Description: desc
+ */
 <template>
   <div class="home-category" @mouseleave="categoryId=null">
     <!-- 左侧分类 start -->
@@ -23,6 +30,7 @@
     </ul>
     <!-- 左侧分类 end -->
 
+    
     <!-- 弹层 start -->
     <div class="layer">
       <h4>
