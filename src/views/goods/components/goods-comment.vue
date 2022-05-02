@@ -2,7 +2,7 @@
 * @Author: jiea
 * @Date: 2022-04-30 21:38:31
 * @LastEditors: jiea
-* @LastEditTime: 2022-05-01 23:18:12
+* @LastEditTime: 2022-05-02 17:19:04
 * @Description: 商品评价
 */
 
@@ -63,6 +63,8 @@
             <span class="attr">{{formatSpecs(item.orderInfo.specs)}}</span>
           </div>
           <div class="text">{{item.content}}</div>
+<!--         图片预览组件  -->
+          <GoodsCommentImage v-if="item.pictures.length" :pictures="item.pictures" />
           <div class="time">
             <span>{{item.createTime}}</span>
             <span class="zan"><i class="iconfont icon-dianzan"></i>{{item.praiseCount}}</span>
@@ -78,6 +80,7 @@
 <script setup>
 import { reactive, ref,watch } from "vue"
 import { findCommentInfoByGoods, findGoodsCommentList } from "@/api/goods"
+import GoodsCommentImage from "@/views/goods/components/goods-comment-image"
 
 const props = defineProps({
   goods: {
@@ -108,7 +111,7 @@ const changeTag = (i) => {
   if (currTag.type === "all") reqParams.hasPicture = false
   else if (currTag.type === "img") {
     reqParams.hasPicture = true
-    reqparams.tag = null
+    reqParams.tag = null
   } else {
     reqParams.hasPicture = false
     reqParams.tag = currTag.title
