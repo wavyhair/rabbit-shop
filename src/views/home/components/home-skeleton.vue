@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-03 08:33:36
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:34:48
+ * @Description: desc
+ */
 <template>
   <div class="home-skeleton">
     <div class="item" v-for="i in 4" :key="i" :style="{ backgroundColor: bg }">
@@ -9,7 +16,8 @@
 </template>
 
 <script setup>
-// name: 'HomeSkeleton',
+
+// eslint-disable-next-line no-undef
 defineProps({
   bg: {
     type: String,

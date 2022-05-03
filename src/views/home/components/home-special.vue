@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-03 08:34:00
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:34:00
+ * @Description: desc
+ */
 <template>
   <HomePanel title="最新专题" ref="homeSpecial">
     <template v-slot:right><XtxMore /></template>
@@ -27,10 +34,10 @@
 
 <script setup>
 import HomePanel from './home-panel'
-import {findSpecial}from '@/api/home'
-import HomeSkeleton from "./home-skeleton.vue";
-import { useLazyData } from '@/hooks';
-const {target:homeSpecial,result:goods} = useLazyData(findSpecial)
+import { findSpecial } from '@/api/home'
+import HomeSkeleton from './home-skeleton.vue'
+import { useLazyData } from '@/hooks'
+const { target: homeSpecial, result: goods } = useLazyData(findSpecial)
 </script>
 
 <style scoped lang='less'>

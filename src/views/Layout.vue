@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-03 08:35:14
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:35:14
+ * @Description: desc
+ */
 <template>
   <AppTopnav />
   <AppHeader />
@@ -9,12 +16,12 @@
   <AppFooter />
 </template>
 <script setup>
-import AppTopnav from "@/components/app-topnav.vue";
-import AppHeader from "@/components/app-header.vue";
-import AppFooter from "@/components/app-footer.vue";
-import AppHeaderSticky from "@/components/app-header-sticky.vue";
+import AppTopnav from '@/components/app-topnav.vue'
+import AppHeader from '@/components/app-header.vue'
+import AppFooter from '@/components/app-footer.vue'
+import AppHeaderSticky from '@/components/app-header-sticky.vue'
 
-import { useStore } from 'vuex';
+import { useStore } from 'vuex'
 // 获取下分类数据
 const store = useStore()
 store.dispatch('category/getCategory')

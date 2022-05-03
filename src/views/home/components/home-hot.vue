@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-03 08:33:14
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:33:14
+ * @Description: desc
+ */
 <template>
   <HomePanel title="人气推荐" sub-title="人气爆款 不容错过">
     <div ref="target" style="position:relative;height:426px;">
@@ -20,10 +27,9 @@
 <script setup>
 import { findHot } from '@/api/home'
 import HomePanel from './home-panel.vue'
-import HomeSkeleton from "./home-skeleton.vue";
+import HomeSkeleton from './home-skeleton.vue'
 import { useLazyData } from '@/hooks'
 const { target, result: list } = useLazyData(findHot)
-
 
 </script>
 <style scoped lang='less'>

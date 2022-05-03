@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-03 08:33:20
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:33:20
+ * @Description: desc
+ */
 <template>
   <div class="home-new">
     <HomePanel title="新鲜好物" sub-title="新鲜出炉 品质靠谱">
@@ -24,12 +31,11 @@
 </template>
 
 <script setup>
-import { findNew } from "@/api/home";
-import HomePanel from "./home-panel.vue";
-import HomeSkeleton from "./home-skeleton.vue";
-import { useLazyData } from "@/hooks";
-const { result: goods, target } = useLazyData(findNew);
-
+import { findNew } from '@/api/home'
+import HomePanel from './home-panel.vue'
+import HomeSkeleton from './home-skeleton.vue'
+import { useLazyData } from '@/hooks'
+const { result: goods, target } = useLazyData(findNew)
 
 </script>
 <style scoped lang="less">

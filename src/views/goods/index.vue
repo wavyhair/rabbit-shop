@@ -2,7 +2,7 @@
  * @Author: jiea
  * @Date: 2022-05-01 17:43:56
  * @LastEditors: jiea
- * @LastEditTime: 2022-05-01 17:43:56
+ * @LastEditTime: 2022-05-03 08:31:51
  * @Description: desc
  */
 <template>
@@ -46,6 +46,8 @@
         <div class="goods-article">
           <!-- 商品+评价 -->
           <GoodsTabs />
+<!--        分页  -->
+          <XtxPagination />
           <!-- 注意事项 -->
           <GoodsWarn />
         </div>
@@ -61,18 +63,19 @@
 </template>
 
 <script setup>
-import GoodsRelevant from "./components/goods-relevant"
+import GoodsRelevant from './components/goods-relevant'
 
-import { findGoods } from "@/api/product"
-import { ref, nextTick, watch,provide } from "vue"
-import { useRoute } from "vue-router"
-import GoodsImage from "./components/goods-image.vue"
-import GoodsName from "./components/goods-name.vue"
-import GoodsSales from "./components/goods-sales.vue"
-import GoodsSku from "./components/goods-sku.vue"
-import GoodsTabs from "@/views/goods/components/goods-tabs"
-import GoodsHot from "@/views/goods/components/goods-hot"
-import GoodsWarn from "@/views/goods/components/goods-warn"
+import { findGoods } from '@/api/product'
+import { ref, nextTick, watch, provide } from 'vue'
+import { useRoute } from 'vue-router'
+import GoodsImage from './components/goods-image.vue'
+import GoodsName from './components/goods-name.vue'
+import GoodsSales from './components/goods-sales.vue'
+import GoodsSku from './components/goods-sku.vue'
+import GoodsTabs from '@/views/goods/components/goods-tabs'
+import GoodsHot from '@/views/goods/components/goods-hot'
+import GoodsWarn from '@/views/goods/components/goods-warn'
+import XtxPagination from '@/components/library/xtx-pagination'
 
 const skuId = ref(undefined)
 
@@ -89,7 +92,6 @@ const useGoods = () => {
         nextTick(() => {
           goods.value = data.result
           skuId.value = goods.value.skus[0].id
-
         })
       })
     }
@@ -107,13 +109,12 @@ const changeSku = (sku) => {
 
 // 数量变化事件
 const num = ref(1)
-const changeNum = (val => {
+const changeNum = val => {
 
-})
+}
 
 const goods = useGoods()
-provide('goods',goods)
-
+provide('goods', goods)
 
 </script>
 
@@ -149,7 +150,6 @@ provide('goods',goods)
     min-height: 1000px;
   }
 }
-
 
 .goods-warn {
   min-height: 600px;

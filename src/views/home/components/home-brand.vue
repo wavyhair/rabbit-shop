@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-03 08:32:54
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:32:54
+ * @Description: desc
+ */
 <template>
   <HomePanel title="热门品牌" sub-title="国际经典 品质保证">
     <template v-slot:right>
@@ -34,19 +41,19 @@
 </template>
 
 <script setup>
-import HomePanel from "./home-panel";
-import { findBrand } from "@/api/home";
-import { ref } from "vue";
-import { useLazyData } from "@/hooks";
-import HomeSkeleton from "./home-skeleton.vue";
-const { target, result: brands } = useLazyData(() => findBrand(10));
+import HomePanel from './home-panel'
+import { findBrand } from '@/api/home'
+import { ref } from 'vue'
+import { useLazyData } from '@/hooks'
+import HomeSkeleton from './home-skeleton.vue'
+const { target, result: brands } = useLazyData(() => findBrand(10))
 //     // 切换效果
-const index = ref(0);
+const index = ref(0)
 const toggle = step => {
-  const newIndex = index.value + step;
-  if (newIndex < 0 || newIndex > 1) return;
-  index.value = newIndex;
-};
+  const newIndex = index.value + step
+  if (newIndex < 0 || newIndex > 1) return
+  index.value = newIndex
+}
 </script>
 
 <style scoped lang="less">

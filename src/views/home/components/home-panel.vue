@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-03 08:33:28
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:36:08
+ * @Description: desc
+ */
 <template>
   <div class="home-panel">
     <div class="container">
@@ -16,15 +23,16 @@
 </template>
 
 <script setup>
+// eslint-disable-next-line no-undef
 defineProps({
   title: {
     type: String,
-    default: "",
+    default: ''
   },
   // 副标题
   subTitle: {
     type: String,
-    default: ""
+    default: ''
   }
 })
 </script>

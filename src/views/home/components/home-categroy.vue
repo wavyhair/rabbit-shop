@@ -2,7 +2,7 @@
  * @Author: jiea
  * @Date: 2022-05-01 09:58:27
  * @LastEditors: jiea
- * @LastEditTime: 2022-05-01 09:58:27
+ * @LastEditTime: 2022-05-03 08:32:58
  * @Description: desc
  */
 <template>
@@ -30,7 +30,6 @@
     </ul>
     <!-- 左侧分类 end -->
 
-    
     <!-- 弹层 start -->
     <div class="layer">
       <h4>
@@ -76,42 +75,42 @@
 </template>
 
 <script setup>
-import { computed, reactive, ref } from "vue";
-import { useStore } from "vuex";
-import { findBrand } from "@/api/home";
-    const store = useStore();
-    // 最终使用的数据 = 9 个分类 + 1 个品牌
-    const brand = reactive({
-      id: "brand",
-      name: "品牌",
-      children: [{ id: "brand-children", name: "品牌推荐" }],
-      // 品牌列表
-      brands: []
-    });
-    const menuList = computed(() => {
-      // 得到 9 个分类 且每个一级分类下子分类只有两个
-      const list = store.state.category.list.map(item => {
-        return {
-          id: item.id,
-          name: item.name,
-          children: item.children && item.children.slice(0, 2),
-          goods: item.goods
-        };
-      });
-      list.push(brand);
-      return list;
-    });
+import { computed, reactive, ref } from 'vue'
+import { useStore } from 'vuex'
+import { findBrand } from '@/api/home'
+const store = useStore()
+// 最终使用的数据 = 9 个分类 + 1 个品牌
+const brand = reactive({
+  id: 'brand',
+  name: '品牌',
+  children: [{ id: 'brand-children', name: '品牌推荐' }],
+  // 品牌列表
+  brands: []
+})
+const menuList = computed(() => {
+  // 得到 9 个分类 且每个一级分类下子分类只有两个
+  const list = store.state.category.list.map(item => {
+    return {
+      id: item.id,
+      name: item.name,
+      children: item.children && item.children.slice(0, 2),
+      goods: item.goods
+    }
+  })
+  list.push(brand)
+  return list
+})
 
-    // 获取弹出层的推荐商品数据
-    const categoryId = ref(null);
-    const currCategory = computed(() => {
-      return menuList.value.find(item => item.id === categoryId.value);
-    });
+// 获取弹出层的推荐商品数据
+const categoryId = ref(null)
+const currCategory = computed(() => {
+  return menuList.value.find(item => item.id === categoryId.value)
+})
 
-    // 获取品牌数据
-    findBrand().then(data => {
-      brand.brands = data.result;
-    });
+// 获取品牌数据
+findBrand().then(data => {
+  brand.brands = data.result
+})
 </script>
 
 <style scoped lang="less">

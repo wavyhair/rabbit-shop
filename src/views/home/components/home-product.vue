@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-03 08:33:32
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:33:32
+ * @Description: desc
+ */
 <template>
   <div class="home-product" ref="homeProduct">
     <HomePanel :title="i.name" v-for="i in result" :key="i.id">
@@ -28,9 +35,9 @@
 <script setup>
 import HomePanel from './home-panel'
 import HomeGoods from './home-goods'
-import { useLazyData } from "@/hooks";
-import {findGoods} from '@/api/home'
-const {target:homeProduct,result} = useLazyData(findGoods)
+import { useLazyData } from '@/hooks'
+import { findGoods } from '@/api/home'
+const { target: homeProduct, result } = useLazyData(findGoods)
 </script>
 
 <style scoped lang='less'>

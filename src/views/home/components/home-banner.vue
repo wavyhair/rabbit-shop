@@ -1,12 +1,12 @@
 <!--
  * @Author: chenjie
  * @Date: 2022-03-06 21:42:55
- * @LastEditors: chenjie
- * @LastEditTime: 2022-04-22 19:43:01
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:32:48
  * @FilePath: \rabbit-shop\src\views\home\components\home-banner.vue
- * @Description: 
- * 
- * Copyright (c) 2022 by chenjie, All Rights Reserved. 
+ * @Description:
+ *
+ * Copyright (c) 2022 by chenjie, All Rights Reserved.
 -->
 <template>
   <div class="home-banner">
@@ -15,13 +15,13 @@
 </template>
 
 <script setup>
-import {  reactive } from "vue";
-import { findBanner } from "@/api/home";
-    let sliders = reactive({data:[]});
-    // 获取轮播图数据
-    findBanner().then(data => {
-      sliders.data = data.result;
-    });
+import { reactive } from 'vue'
+import { findBanner } from '@/api/home'
+const sliders = reactive({ data: [] })
+// 获取轮播图数据
+findBanner().then(data => {
+  sliders.data = data.result
+})
 
 </script>
 <style scoped lang="less">

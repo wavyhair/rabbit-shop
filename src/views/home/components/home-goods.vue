@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-03 08:33:06
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-03 08:37:17
+ * @Description: desc
+ */
 <template>
   <div class="goods-item">
     <RouterLink to="/" class="image">
@@ -16,10 +23,11 @@
 </template>
 
 <script setup>
+// eslint-disable-next-line no-undef,no-unused-vars
 const props = defineProps({
   goods: {
     type: Object,
-    required: true,
+    required: true
   }
 })
 
