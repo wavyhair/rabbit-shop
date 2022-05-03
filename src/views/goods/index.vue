@@ -2,7 +2,7 @@
  * @Author: jiea
  * @Date: 2022-05-01 17:43:56
  * @LastEditors: jiea
- * @LastEditTime: 2022-05-03 08:31:51
+ * @LastEditTime: 2022-05-03 20:15:45
  * @Description: desc
  */
 <template>
@@ -46,8 +46,7 @@
         <div class="goods-article">
           <!-- 商品+评价 -->
           <GoodsTabs />
-<!--        分页  -->
-          <XtxPagination />
+
           <!-- 注意事项 -->
           <GoodsWarn />
         </div>
@@ -75,7 +74,6 @@ import GoodsSku from './components/goods-sku.vue'
 import GoodsTabs from '@/views/goods/components/goods-tabs'
 import GoodsHot from '@/views/goods/components/goods-hot'
 import GoodsWarn from '@/views/goods/components/goods-warn'
-import XtxPagination from '@/components/library/xtx-pagination'
 
 const skuId = ref(undefined)
 
@@ -109,9 +107,6 @@ const changeSku = (sku) => {
 
 // 数量变化事件
 const num = ref(1)
-const changeNum = val => {
-
-}
 
 const goods = useGoods()
 provide('goods', goods)
