@@ -2,7 +2,7 @@
 * @Author: jiea
 * @Date: 2022-04-30 21:38:31
 * @LastEditors: jiea
-* @LastEditTime: 2022-05-03 21:36:07
+* @LastEditTime: 2022-05-03 21:48:56
 * @Description: 商品评价
 */
 
@@ -160,7 +160,6 @@ const formatNickname = nickname => {
 }
 // 分页切换
 const changePagerFn = newPage => {
-  console.log('n', newPage)
   reqParams.page = newPage
 }
 </script>
