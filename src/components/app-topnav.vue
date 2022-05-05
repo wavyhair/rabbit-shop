@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-05 20:26:18
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-05 20:27:28
+ * @Description: desc
+ */
 <template>
   <nav class="app-topnav">
     <div class="container">
@@ -7,7 +14,9 @@
         <li><a href="javascript:;">退出登录</a></li>
         </template>
       <template v-else>
-          <li><a href="javascript:;">请先登录</a></li>
+          <li>
+            <RouterLink to="/login"/>
+          </li>
         <li><a href="javascript:;">免费注册</a></li>
       </template>
         <li><a href="javascript:;">我的订单</a></li>
@@ -20,12 +29,12 @@
   </nav>
 </template>
 <script setup>
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
-    const store = useStore()
-    const profile = computed(()=>{
-      return store.state.user.profile
-    })
+const store = useStore()
+const profile = computed(() => {
+  return store.state.user.profile
+})
 </script>
 <style scoped lang="less">
 .app-topnav {
