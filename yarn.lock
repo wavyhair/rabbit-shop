@@ -9341,6 +9341,11 @@
   "resolved" "https://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz"
   "version" "1.1.2"
 
+"vee-validate@^4.0.3":
+  "integrity" "sha512-Ovk5+rNCnwZDQuRcCcq8claqJNNerBauKzCBD3bDoGBWqoLwAfo7rakr4p/jJs5WB4qpCyxjuycZMZJhuUNA/g=="
+  "resolved" "https://registry.npmmirror.com/vee-validate/-/vee-validate-4.0.3.tgz"
+  "version" "4.0.3"
+
 "vendors@^1.0.0":
   "integrity" "sha1-4rgApT56Kbk1BsPPQRANFsTErY4="
   "resolved" "https://registry.npm.taobao.org/vendors/download/vendors-1.0.4.tgz?cache=0&sync_timestamp=1615203397897&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvendors%2Fdownload%2Fvendors-1.0.4.tgz"
