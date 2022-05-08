@@ -2,7 +2,7 @@
 * @Author: jiea
 * @Date: 2022-04-30 21:38:31
 * @LastEditors: jiea
-* @LastEditTime: 2022-05-03 21:48:56
+* @LastEditTime: 2022-05-07 21:02:58
 * @Description: 商品评价
 */
 
@@ -87,7 +87,6 @@
 import { reactive, ref, watch } from 'vue'
 import { findCommentInfoByGoods, findGoodsCommentList } from '@/api/goods'
 import GoodsCommentImage from '@/views/goods/components/goods-comment-image'
-// eslint-disable-next-line
 const props = defineProps({
   goods: {
     type: Object,

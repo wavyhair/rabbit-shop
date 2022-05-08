@@ -1,4 +1,11 @@
 /*
+ * @Author: jiea
+ * @Date: 2022-05-07 21:00:20
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-07 21:00:20
+ * @Description: desc
+ */
+/*
 * @Description: file content
 * @path: src/views/goods/components
 * @Autor:Huhuuuu
@@ -18,9 +25,9 @@
 </template>
 
 <script setup>
-import { computed,ref } from "vue"
-import { findHotGoods } from "@/api/goods"
-import GoodsItem from "@/views/category/components/goods-item"
+import { computed, ref } from 'vue'
+import { findHotGoods } from '@/api/goods'
+import GoodsItem from '@/views/category/components/goods-item'
 const props = defineProps({
   type: {
     type: Number,
@@ -31,7 +38,7 @@ const props = defineProps({
   }
 })
 // 标题
-const titleObj = { 1: "24小时热销榜", 2: "周热销榜", 3: "总热销榜" }
+const titleObj = { 1: '24小时热销榜', 2: '周热销榜', 3: '总热销榜' }
 const title = computed(() => {
   return titleObj[props.type]
 })

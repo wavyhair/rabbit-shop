@@ -2,7 +2,7 @@
  * @Author: jiea
  * @Date: 2022-05-01 17:43:56
  * @LastEditors: jiea
- * @LastEditTime: 2022-05-03 20:15:45
+ * @LastEditTime: 2022-05-08 20:14:17
  * @Description: desc
  */
 <template>
@@ -60,7 +60,6 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import GoodsRelevant from './components/goods-relevant'
 

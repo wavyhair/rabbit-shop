@@ -2,8 +2,8 @@
 * @Author: jiea
 * @Date: 2022-05-02 17:17:44
 * @LastEditors: jiea
-* @LastEditTime: 2022-05-02 17:21:38
-* @Description: desc
+* @LastEditTime: 2022-05-07 21:03:35
+* @Description: 评论图片组件
 */
 <template>
   <div class="goods-comment-image">
@@ -27,8 +27,7 @@
 <script setup>
 import { ref } from 'vue'
 
-// eslint-disable-next-line no-unused-vars,no-undef
-const props = defineProps({
+defineProps({
   pictures: {
     type: Array,
     default: () => []
