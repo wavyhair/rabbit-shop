@@ -1,12 +1,11 @@
 /*
-* @path: src/views/login
-* @Autor:jiea
-* @LastEditors: jiea
-* Date: 2022-05-05 20:16
-* @LastEditTime: 2022-05-05 20:57:40
-* IDE:WebStorm
-* @Description: ...
-*/
+ * @Author: jiea
+ * @Date: 2022-05-11 18:36:24
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-11 19:44:45
+ * @Description: 登录页面
+ */
+
 <template>
   <LoginHeader>欢迎登录</LoginHeader>
   <section class="login-section">
@@ -27,11 +26,13 @@
   <LoginFooter/>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, getCurrentInstance } from 'vue'
+const { proxy } = getCurrentInstance()
 import LoginHeader from './components/login-header'
 import LoginFooter from './components/login-footer'
 import LoginForm from './components/login-form'
 const activeName = ref('account')
+proxy.message({ type: 'error', text: '444' })
 </script>
 
 <style scoped lang="less">

@@ -2,8 +2,8 @@
  * @Author: jiea
  * @Date: 2022-05-01 17:43:56
  * @LastEditors: jiea
- * @LastEditTime: 2022-05-08 20:14:17
- * @Description: desc
+ * @LastEditTime: 2022-05-11 18:36:06
+ * @Description: 商品页面
  */
 <template>
   <div class="xtx-goods-page">

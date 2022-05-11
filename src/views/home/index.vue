@@ -2,8 +2,8 @@
  * @Author: jiea
  * @Date: 2022-05-03 08:32:30
  * @LastEditors: jiea
- * @LastEditTime: 2022-05-03 08:32:30
- * @Description: desc
+ * @LastEditTime: 2022-05-11 18:35:48
+ * @Description: 首页
  */
 <template>
   <div class="xtx-home-page">

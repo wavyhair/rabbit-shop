@@ -7,7 +7,8 @@
 // import XtxMore from "./xtx-more.vue";
 // import XtxBread from "./xtx-bread.vue";
 // import XtxBreadItem from "./xtx-bread-item.vue";
-import defaultImg from "@/assets/images/200.png";
+import defaultImg from '@/assets/images/200.png'
+import Message from './message'
 
 // 批量注册组件流程
 /**
@@ -19,18 +20,17 @@ import defaultImg from "@/assets/images/200.png";
  *
  * context(目录路径、是否加载子目录、加载文件的匹配正则)
  */
- const importFn = require.context('./',false,/\.vue$/)
+const importFn = require.context('./', false, /\.vue$/)
 export default {
-  install(app) {
+  install (app) {
     // 根据 keys 批量注册
-    importFn.keys().forEach(path=>{
+    importFn.keys().forEach(path => {
       // 导入组件 default 是每一个组件
       const component = importFn(path).default
       // 进行注册
-      if(component.name){
-        app.component(component.name,component)
+      if (component.name) {
+        app.component(component.name, component)
       }
-
     })
     // 在 app 上进行扩展，app 提供 component  directive
     // 如果要挂载原型   app.config.globalProperties.$http 方式
@@ -40,36 +40,37 @@ export default {
     // app.component(XtxBread.name, XtxBread);
     // app.component(XtxBreadItem.name, XtxBreadItem);
     // 定义指令
-    defineDirective(app);
+    defineDirective(app)
+    app.config.globalProperties.message = Message
   }
-};
+}
 const defineDirective = app => {
   // 原理：先存储图片地址不能在 src 上，当图片进去可视区，将你存储图片地址设置给图片元素即可。
-  app.directive("lazy", {
+  app.directive('lazy', {
     // vue2.0 监听使用指令的 DOM 是否创建好 钩子函数是:interted
     // vue3.0 的指令拥有的钩子函数和组件的一样 使用指令的 DOM 是否创建好 钩子函数 mounted
-    mounted(el, binding) {
+    mounted (el, binding) {
       // 创建一个观察对象 来观察当前使用指令的元素
       const obsever = new IntersectionObserver(
         ([{ isIntersecting }]) => {
           if (isIntersecting) {
             // 进去可视区之后先停止观察
-            obsever.unobserve(el);
+            obsever.unobserve(el)
             // 把指令的值设置给 el 的 src 属性  binding.value 就是指令的值
             // 处理图片加载失败 onerror 图片加载失败的时间  onload 图片加载成功
             el.onerror = () => {
-              el.src = defaultImg;
-            };
-            el.src = binding.value;
+              el.src = defaultImg
+            }
+            el.src = binding.value
           }
         },
         {
           // 相交值
           threshold: 0
         }
-      );
+      )
       // 开启观察
-      obsever.observe(el);
+      obsever.observe(el)
     }
-  });
-};
+  })
+}
