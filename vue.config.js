@@ -1,7 +1,6 @@
 const path = require('path')
 module.exports = {
   pluginOptions: {
-    'vue/multi-word-component-names': 0,
     'style-resources-loader': {
       preProcessor: 'less',
       patterns: [
