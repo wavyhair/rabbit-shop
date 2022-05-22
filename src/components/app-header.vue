@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:42:11
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:42:11
+ * @Description: desc
+ */
 <template>
   <header class="app-header">
     <div class="container">
@@ -17,7 +24,7 @@
 </template>
 
 <script setup>
-import AppHeaderNav from "@/components/app-header-nav.vue"
+import AppHeaderNav from '@/components/app-header-nav.vue'
 
 </script>
 

@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:42:20
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:42:20
+ * @Description: desc
+ */
 <template>
   <ul class="app-header-nav">
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
@@ -18,19 +25,19 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useStore } from "vuex";
-    const store = useStore();
-    // 获取一级分类
-    const list = computed(() => {
-      return store.state.category.list;
-    });
-    // 显示二级分类
-    const show = item=>{store.commit('category/show',item)}
-    // 隐藏二级分类
-    const hide = item=>{store.commit('category/hide',item)}
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+const store = useStore()
+// 获取一级分类
+const list = computed(() => {
+  return store.state.category.list
+})
+// 显示二级分类
+const show = item => { store.commit('category/show', item) }
+// 隐藏二级分类
+const hide = item => { store.commit('category/hide', item) }
 
-    // 
+//
 </script>
 
 <style scoped lang="less">

@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:32:09
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:32:09
+ * @Description: desc
+ */
 <template>
   <div class="sub-sort">
     <div class="sort">
@@ -53,8 +60,8 @@
 // 3.在操作排序组件的时候，需要反馈给数据对象
 // sortField====>publishTime,orderNum,price,evaluateNum
 // sortMethod====>asc为正序 desc为倒序
-import { reactive } from "vue"
-const emits = defineEmits(["filter-change"])
+import { reactive } from 'vue'
+const emits = defineEmits(['filter-change'])
 const sortParams = reactive({
   inventory: false, // 库存
   onlyDiscount: false, // 折扣
@@ -63,28 +70,28 @@ const sortParams = reactive({
 })
 // 改变排序
 const changeSort = sortField => {
-  if (sortField === "price") {
+  if (sortField === 'price') {
     sortParams.sortField = sortField
     if (sortParams.sortMethod === null) {
       //  第一次点击 默认为降序
-      sortParams.sortMethod = "desc"
-      emits("filter-change", sortParams)
+      sortParams.sortMethod = 'desc'
+      emits('filter-change', sortParams)
     } else {
       //  直接取反
-      sortParams.sortMethod = sortParams.sortMethod === "desc" ? "asc" : "desc"
-      emits("filter-change", sortParams)
+      sortParams.sortMethod = sortParams.sortMethod === 'desc' ? 'asc' : 'desc'
+      emits('filter-change', sortParams)
     }
   } else {
     //  如果排序没有改变直接 return
     if (sortParams.sortField === sortField) return
     sortParams.sortField = sortField
     sortParams.sortMethod = null
-    emits("filter-change", sortParams)
+    emits('filter-change', sortParams)
   }
 }
 // 复选框改变
 const changeCheck = () => {
-  emits("filter-change", sortParams)
+  emits('filter-change', sortParams)
 }
 </script>
 <style scoped lang="less">

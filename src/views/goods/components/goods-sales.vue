@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:29:45
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:29:45
+ * @Description: desc
+ */
 <template>
   <ul class="goods-sales">
     <li>

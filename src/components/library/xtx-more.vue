@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:38:53
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:38:53
+ * @Description: desc
+ */
 <template>
   <RouterLink :to="path" class="xtx-more">
     <span>查看全部</span>

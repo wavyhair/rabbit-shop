@@ -1,4 +1,11 @@
 /*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:30:07
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:30:07
+ * @Description: desc
+ */
+/*
 * @Description: file content
 * @path: src\views\goods\components\goods-relevant.vue
 * @Autor:jie
@@ -17,9 +24,9 @@
 </template>
 
 <script setup>
-import { findRelGoods } from "@/api/goods"
-import { ref } from "vue"
-import XtxCarousel from "@/components/library/xtx-carousel"
+import { findRelGoods } from '@/api/goods'
+import { ref } from 'vue'
+import XtxCarousel from '@/components/library/xtx-carousel'
 
 const props = defineProps({
   goodsId: {
@@ -28,7 +35,7 @@ const props = defineProps({
   }
 })
 // 根据 id 查找数据
-const useRelGoodsDate = (id => {
+const useRelGoodsDate = id => {
   const sliders = ref([])
   findRelGoods(id).then(data => {
     //  每页四条
@@ -39,7 +46,7 @@ const useRelGoodsDate = (id => {
     }
   })
   return sliders
-})
+}
 const sliders = useRelGoodsDate(props.goodsId)
 </script>
 

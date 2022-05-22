@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:34:09
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:34:19
+ * @Description: desc
+ */
 <template>
   <RouterLink :to="`/product/${goods.id}`" class='goods-item'>
     <img :src="goods.picture" alt="">
@@ -8,11 +15,11 @@
 </template>
 
 <script setup>
-import {defineProps} from 'vue'
-const props = defineProps({
-  goods:{
-    type:Object,
-    default:()=>{}
+import { defineProps } from 'vue'
+defineProps({
+  goods: {
+    type: Object,
+    default: () => {}
   }
 })
 </script>

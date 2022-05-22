@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:37:36
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:37:36
+ * @Description: desc
+ */
 <template>
   <div class="xtx-skeleton" :style="{width,height}" :class="{shan:animated}">
     <!-- 1 盒子-->
@@ -66,4 +73,4 @@ export default {
     left: 120%;
   }
 }
-</style> 
+</style>

@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:32:00
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:32:00
+ * @Description: desc
+ */
 <template>
   <div class="sub-category">
     <div class="container">
@@ -24,11 +31,11 @@
 <script setup>
 import SubBread from './sub-bread.vue'
 import SubFilter from './sub-filter.vue'
-import SubSort from "@/views/category/sub-sort"
-import GoodsItem from './components/goods-item.vue';
-import XtxInfiniteLoading from '@/components/library/xtx-infinite-loading.vue';
-import { useRoute } from 'vue-router';
-import { findSubCategoryGoods } from '@/api/category';
+import SubSort from '@/views/category/sub-sort'
+import GoodsItem from './components/goods-item.vue'
+import XtxInfiniteLoading from '@/components/library/xtx-infinite-loading.vue'
+import { useRoute } from 'vue-router'
+import { findSubCategoryGoods } from '@/api/category'
 import { ref, watch } from 'vue'
 const route = useRoute()
 const loading = ref(false)
@@ -68,11 +75,11 @@ watch(() => route.params.id, (newVal) => {
     finished.value = false
   }
 })
-// 更改筛选数组的筛选数据 
+// 更改筛选数组的筛选数据
 const filterChange = (filterParams) => {
   changeSequence(filterParams)
 }
-// 排序改变 
+// 排序改变
 const sortChange = (filterParams) => {
   changeSequence(filterParams)
 }
@@ -84,7 +91,6 @@ const changeSequence = (filterParams) => {
   reqParams.page = 1
   goodsList.value = []
   getData()
-
 }
 </script>
 <style scoped lang="less">

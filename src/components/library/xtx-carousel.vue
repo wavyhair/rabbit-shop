@@ -1,4 +1,11 @@
 /*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:39:27
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:39:27
+ * @Description: desc
+ */
+/*
  * @Description: file content
  * @path: src\components\library\xtx-carousel.vue
  * @Autor:jie
@@ -48,84 +55,84 @@
 </template>
 
 <script>
-export default{
-  name: "XtxCarousel",
+export default {
+  name: 'XtxCarousel'
 }
 </script>
 <script setup>
-import { onUnmounted, ref, watch } from "vue";
+import { onUnmounted, ref, watch } from 'vue'
 
-const props= defineProps({
-   // 轮播图数据
-    sliders: {
-      type: Array,
-      default: () => []
-    },
-    // 是否自动轮播
-    autoPlay: {
-      type: Boolean,
-      default: () => false
-    },
-    // 间隔时长
-    duration: {
-      type: Number,
-      default: () => 3000
-    }
+const props = defineProps({
+  // 轮播图数据
+  sliders: {
+    type: Array,
+    default: () => []
+  },
+  // 是否自动轮播
+  autoPlay: {
+    type: Boolean,
+    default: () => false
+  },
+  // 间隔时长
+  duration: {
+    type: Number,
+    default: () => 3000
+  }
 })
 
-    const index = ref(0);
-    // 自动轮播
-    let timer = null;
-    const autoPlayFn = () => {
-      clearInterval(timer);
-      timer = setInterval(() => {
-        index.value++;
-        if (index.value >= props.sliders.length) {
-          index.value = 0;
-        }
-      }, props.duration);
-    };
-    // 监听 sliders 数据变化  如果有数据 并且 autoPlay 是 true
-    watch(
-      () => props.sliders,
-      newVal => {
-        if (newVal.length && props.autoPlay) {
-          autoPlayFn();
-        }
-      },
-      { immediate: true }
-    );
-    // 鼠标进入暂停播放 离开开启自动播放
-    const stop = () => {
-      if (timer) clearInterval(timer);
-    };
+const index = ref(0)
+// 自动轮播
+let timer = null
+const autoPlayFn = () => {
+  clearInterval(timer)
+  timer = setInterval(() => {
+    index.value++
+    if (index.value >= props.sliders.length) {
+      index.value = 0
+    }
+  }, props.duration)
+}
+// 监听 sliders 数据变化  如果有数据 并且 autoPlay 是 true
+watch(
+  () => props.sliders,
+  newVal => {
+    if (newVal.length && props.autoPlay) {
+      autoPlayFn()
+    }
+  },
+  { immediate: true }
+)
+// 鼠标进入暂停播放 离开开启自动播放
+const stop = () => {
+  if (timer) clearInterval(timer)
+}
 
-    const start = () => {
-      if (props.sliders.length && props.autoPlay) {
-        autoPlayFn();
-      }
-    };
+const start = () => {
+  if (props.sliders.length && props.autoPlay) {
+    autoPlayFn()
+  }
+}
 
-    // 切换上一张下一张
-    const toggle = step => {
-      // 将要改变的索引
-      const newIndex = index.value + step;
-      if (newIndex > props.sliders.length - 1) {
-        index.value = 0;
-        return;
-      }
-      if (newIndex < 0) {
-        index.value = props.sliders.length - 1;
-        return;
-      }
-      // 正常
-      index.value = newIndex;
-    };
+// 切换上一张下一张
+const toggle = step => {
+  // 将要改变的索引
+  const newIndex = index.value + step
+  if (newIndex > props.sliders.length - 1) {
+    index.value = 0
+    return
+  }
+  if (newIndex < 0) {
+    index.value = props.sliders.length - 1
+    return
+  }
+  // 正常
+  index.value = newIndex
+}
 
-    // 组件卸载 清除定时器
-    onUnmounted(()=>{
-      clearInterval(timer)
-    })
+// 组件卸载 清除定时器
+onUnmounted(() => {
+  clearInterval(timer)
+})
 </script>
 <style scoped lang="less">
 .xtx-carousel {

@@ -1,14 +1,14 @@
-import request from "@/utils/request"
+import request from '@/utils/request'
 // 获取首页头部分类数据
 export const findAllCategory = () => {
-  return request("/home/category/head", "get")
+  return request('/home/category/head', 'get')
 }
 /**
  * 获取单个顶级分类信息
  * @param {String} id-顶级分类ID
  */
 export const findTopCategory = id => {
-  return request("/category", "get", { id })
+  return request('/category', 'get', { id })
 }
 
 /**
@@ -17,13 +17,13 @@ export const findTopCategory = id => {
  *
  */
 export const findSubCategoryFilter = id => {
-  return request("/category/sub/filter", "get", { id })
+  return request('/category/sub/filter', 'get', { id })
 }
 
 /**
  * 获取分类下的商品（带筛选条件）
  * @param {Object} params - 可参考接口文档
  */
- export const findSubCategoryGoods = (params) => {
-    return request("/category/goods/temporary", "POST", params)
-  }
+export const findSubCategoryGoods = (params) => {
+  return request('/category/goods/temporary', 'POST', params)
+}

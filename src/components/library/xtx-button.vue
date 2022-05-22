@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:38:29
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:41:25
+ * @Description: desc
+ */
 <template>
   <button class="xtx-button ellipsis" :class="[size,type]">
     <slot />
@@ -5,18 +12,18 @@
 </template>
 <script>
 export default {
-  name: "XtxButton"
+  name: 'XtxButton'
 }
 </script>
 <script setup>
-const props = defineProps({
+defineProps({
   size: {
     type: String,
-    default: "middle"
+    default: 'middle'
   },
   type: {
     type: String,
-    default: "default"
+    default: 'default'
   }
 })
 </script>

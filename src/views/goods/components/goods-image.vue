@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:30:54
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:31:26
+ * @Description: desc
+ */
 <template>
   <div class="goods-image">
     <div
@@ -18,9 +25,9 @@
   </div>
 </template>
 <script setup>
-import { ref, reactive, watch ,onUnmounted} from 'vue'
-import { useMouseInElement } from '@vueuse/core';
-const props = defineProps({
+import { ref, reactive, watch } from 'vue'
+import { useMouseInElement } from '@vueuse/core'
+defineProps({
   // 图片集合
   images: {
     type: Array,
@@ -30,33 +37,32 @@ const props = defineProps({
 // 当前图片索引
 const currIndex = ref(0)
 
-  const target = ref(null)
-  const show = ref(false)
-  // elementX 鼠标基于容器左上角 X 轴偏移
-  // elementY 鼠标基于容器左上角 Y 轴便宜
-  // isOutside 鼠标是否在模板容器外
-  const { elementX, elementY, isOutside } = useMouseInElement(target)
-  const position = reactive({ left: 0, top: 0 })
-  const bgPosition = reactive({ backgroundPositionX: 0, backgroundPositionY: 0 })
-  watch([elementX, elementY, isOutside], () => {
-    // 控制 X 轴方向的定位 0-200 之间
-    if (elementX.value < 100) position.left = 0
-    else if (elementX.value > 300) position.left = 200
-    else position.left = elementX.value - 100
-    // 控制 Y 轴方向的定位 0-200 之间
-    if (elementY.value < 100) position.top = 0
-    else if (elementY.value > 300) position.top = 200
-    else position.top = elementY.value - 100
-    // 设置大背景的定位
-    bgPosition.backgroundPositionX = -position.left * 2 + 'px'
-    bgPosition.backgroundPositionY = -position.top * 2 + 'px'
-    // 设置遮罩容器的定位
-    position.left = position.left + 'px'
-    position.top = position.top + 'px'
-    //  设置是否显示预览大图
-    show.value = !isOutside.value
-  })
-
+const target = ref(null)
+const show = ref(false)
+// elementX 鼠标基于容器左上角 X 轴偏移
+// elementY 鼠标基于容器左上角 Y 轴便宜
+// isOutside 鼠标是否在模板容器外
+const { elementX, elementY, isOutside } = useMouseInElement(target)
+const position = reactive({ left: 0, top: 0 })
+const bgPosition = reactive({ backgroundPositionX: 0, backgroundPositionY: 0 })
+watch([elementX, elementY, isOutside], () => {
+  // 控制 X 轴方向的定位 0-200 之间
+  if (elementX.value < 100) position.left = 0
+  else if (elementX.value > 300) position.left = 200
+  else position.left = elementX.value - 100
+  // 控制 Y 轴方向的定位 0-200 之间
+  if (elementY.value < 100) position.top = 0
+  else if (elementY.value > 300) position.top = 200
+  else position.top = elementY.value - 100
+  // 设置大背景的定位
+  bgPosition.backgroundPositionX = -position.left * 2 + 'px'
+  bgPosition.backgroundPositionY = -position.top * 2 + 'px'
+  // 设置遮罩容器的定位
+  position.left = position.left + 'px'
+  position.top = position.top + 'px'
+  //  设置是否显示预览大图
+  show.value = !isOutside.value
+})
 
 </script>
 <style scoped lang="less">

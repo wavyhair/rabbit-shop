@@ -1,10 +1,10 @@
-import request from "@/utils/request";
+import request from '@/utils/request'
 
 /**
- * 
+ *
  * @param {String} id - 商品 id
- * @returns 
+ * @returns
  */
-export const findGoods = (id)=>{
-    return request('/goods','get',{id})
+export const findGoods = (id) => {
+  return request('/goods', 'get', { id })
 }

@@ -1,6 +1,6 @@
 
 <script >
-import {h} from 'vue'
+import { h } from 'vue'
 export default {
   name: 'XtxBread',
   /**
@@ -16,17 +16,17 @@ export default {
    * 4.遍历插槽中的 item，得到一个动态创建的结点，最后一个 item 不加 i 标签。
    * 5.把动态创建的节点渲染在 xtx-bread 标签中。
    */
-  render() {
+  render () {
     const items = this.$slots.default()
-    const dymanicItems =[]
-     items.forEach((item,i)=>{
-       dymanicItems.push(item)
-       if(i<items.length-1){
-         dymanicItems.push(h('i',{class:'iconfont icon-angle-right'}))
-       }
-     })
-    return h('div',{class:'xtx-bread'},dymanicItems)
-  },
+    const dymanicItems = []
+    items.forEach((item, i) => {
+      dymanicItems.push(item)
+      if (i < items.length - 1) {
+        dymanicItems.push(h('i', { class: 'iconfont icon-angle-right' }))
+      }
+    })
+    return h('div', { class: 'xtx-bread' }, dymanicItems)
+  }
 }
 </script>
 

@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:32:21
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:32:21
+ * @Description: desc
+ */
 <template>
   <!-- 筛选区 -->
   <div class="sub-filter" v-if="filterData && !filterLoading">
@@ -87,7 +94,7 @@ const getFilterParams = () => {
     }
   })
   // 参考数据 ：{brandId:'',attrs:[{groupName:'',propertyName:''},...]}
-  if(!obj.attrs.length) obj.attrs = null
+  if (!obj.attrs.length) obj.attrs = null
   return obj
 }
 
@@ -95,13 +102,13 @@ const getFilterParams = () => {
 const changeBrand = (brandId) => {
   if (filterData.value.selectedBrand === brandId) return
   filterData.value.selectedBrand = brandId
-  emits('filter-change',getFilterParams())
+  emits('filter-change', getFilterParams())
 }
 // 记录当前选择的销售属性
 const changeProp = (item, propId) => {
   if (item.selectedProp === propId) return
   item.selectedProp = propId
-  emits('filter-change',getFilterParams())
+  emits('filter-change', getFilterParams())
 }
 </script>
 <style scoped lang='less'>

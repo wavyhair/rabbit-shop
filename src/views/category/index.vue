@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:33:37
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:33:37
+ * @Description: desc
+ */
 <template>
   <div class="top-category">
     <div class="container">
@@ -41,20 +48,19 @@
       </div>
       <!-- 分类关联商品 e  -->
 
-
     </div>
   </div>
 </template>
 <script setup>
-import XtxBreadItem from "@/components/library/xtx-bread-item.vue"
+import XtxBreadItem from '@/components/library/xtx-bread-item.vue'
 import GoodsItem from './components/goods-item'
-import {useStore} from 'vuex'
-import {useRoute} from 'vue-router'
-import {computed, reactive, watch} from 'vue'
-import {findBanner} from "@/api/home"
-import {findTopCategory} from "@/api/category"
+import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
+import { computed, reactive, watch } from 'vue'
+import { findBanner } from '@/api/home'
+import { findTopCategory } from '@/api/category'
 // 获取轮播图数据
-let sliders = reactive({data: []})
+const sliders = reactive({ data: [] })
 findBanner().then(data => {
   sliders.data = data.result
 })
@@ -70,17 +76,17 @@ const topCategory = computed(() => {
   return cate
 })
 // 推荐商品
-const subList = reactive({data:[]})
+const subList = reactive({ data: [] })
 const getSubList = () => {
   findTopCategory(route.params.id).then(data => {
     subList.data = data.result.children
   })
-} 
-watch(()=>route.params.id,(newId)=>{
+}
+watch(() => route.params.id, (newId) => {
   // 加上一个严谨判断 有 id 并且在一集类目下发请求
   // 有 id，并且路径拼接等于地址栏路径才发请求，防止二级类目也发请求的问题
-  if(newId&&`/category/${newId}`===route.path)getSubList()
-},{immediate:true})
+  if (newId && `/category/${newId}` === route.path)getSubList()
+}, { immediate: true })
 
 </script>
 <style scoped lang="less">

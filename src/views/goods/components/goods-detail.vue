@@ -1,4 +1,11 @@
 /*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:31:36
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:31:36
+ * @Description: desc
+ */
+/*
 * @Description: 商品详情
 * @path: src/views/goods/components
 * @Autor:Huhuuuu
@@ -23,7 +30,7 @@
 </template>
 
 <script setup>
-import {inject} from "vue"
+import { inject } from 'vue'
 const goods = inject('goods')
 
 </script>

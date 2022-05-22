@@ -1,4 +1,11 @@
 /*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:37:48
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:37:48
+ * @Description: desc
+ */
+/*
  * @Description: file content
  * @path: src\components\library\xtx-numbox.vue
  * @Autor:jie
@@ -17,39 +24,39 @@
 </template>
 <script>
 export default {
-    name: 'XtxNumbox'
+  name: 'XtxNumbox'
 }
 </script>
 <script setup>
-import { useVModel } from '@vueuse/core';
-import {  defineProps, defineEmits } from "vue";
+import { useVModel } from '@vueuse/core'
+import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
-    label: {
-        type: String
-    },
+  label: {
+    type: String
+  },
   modelValue: {
-        type: Number,
-        default: 1
-    },
-    min: {
-        type: Number,
-        default: 1
-    },
-    max: {
-        type: Number,
-        default: 100
-    }
+    type: Number,
+    default: 1
+  },
+  min: {
+    type: Number,
+    default: 1
+  },
+  max: {
+    type: Number,
+    default: 100
+  }
 })
 const emits = defineEmits(['change'])
 const num = useVModel(props, 'modelValue', emits)
 // 加减按钮事件
-const changeNum = (val => {
-    const newValue = num.value + val
-    if(newValue<props.min||newValue>props.max)return
-    num.value = newValue
-    emits('change',newValue)
-})
+const changeNum = val => {
+  const newValue = num.value + val
+  if (newValue < props.min || newValue > props.max) return
+  num.value = newValue
+  emits('change', newValue)
+}
 
 </script>
 <style scoped lang="less">

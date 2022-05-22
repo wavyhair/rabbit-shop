@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:42:02
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:42:02
+ * @Description: desc
+ */
 <template>
   <div class="app-header-sticky" :class="{show:y>=78}">
     <div class="container" v-show="y>=78">
@@ -12,16 +19,16 @@
 </template>
 
 <script setup>
-import AppHeaderNav from "@/components/app-header-nav.vue"
-import { ref,onMounted } from 'vue';
+import AppHeaderNav from '@/components/app-header-nav.vue'
+import { ref, onMounted } from 'vue'
 
-      const y =ref(0)
-      onMounted(()=>{
-          window.onscroll=()=>{
-              const scrollTop = document.documentElement.scrollTop
-              y.value = scrollTop
-          }
-      })
+const y = ref(0)
+onMounted(() => {
+  window.onscroll = () => {
+    const scrollTop = document.documentElement.scrollTop
+    y.value = scrollTop
+  }
+})
 
 </script>
 

@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:38:06
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:41:09
+ * @Description: desc
+ */
 <template>
   <div class="xtx-city" ref="target">
     <div class="select" @click="toggleDialog" :class="{ active }">
@@ -26,11 +33,11 @@ export default {
 <script setup>
 import { ref, computed, reactive } from 'vue'
 import { onClickOutside } from '@vueuse/core'
-import axios from 'axios';
-const props = defineProps({
-  fullLocation:{
-    type:String,
-    default:''
+import axios from 'axios'
+defineProps({
+  fullLocation: {
+    type: String,
+    default: ''
   }
 })
 const emits = defineEmits(['change'])
@@ -60,9 +67,10 @@ onClickOutside(target, () => {
 const getCityData = () => {
   return new Promise((resolve, reject) => {
     // 有缓存
-    if (window.cityData) { resolve(window.cityData) }
-    // 无缓存
-    else {
+    if (window.cityData) {
+      resolve(window.cityData)
+    } else {
+      // 无缓存
       const url = 'https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/area.json'
       axios.get(url).then(res => {
         window.cityData = res.data
@@ -132,7 +140,6 @@ const changeItem = (item) => {
     closeDialog()
     emits('change', changeResult)
   }
-
 }
 </script>
 

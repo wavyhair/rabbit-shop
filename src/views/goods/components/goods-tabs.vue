@@ -1,3 +1,12 @@
+<!--
+ * @Author: chenjie
+ * @Date: 2022-05-02 17:23:40
+ * @LastEditors: chenjie
+ * @LastEditTime: 2022-05-22 18:12:33
+ * @FilePath: \rabbit-shop\src\views\goods\components\goods-tabs.vue
+ * @Description:
+ * Copyright (c) 2022 by chenjie, All Rights Reserved.
+-->
 /*
  * @Author: jiea
  * @Date: 2022-05-01 17:45:14
@@ -5,51 +14,35 @@
  * @LastEditTime: 2022-05-01 17:47:18
  * @Description: desc
  */
-/*
-* @Description: file content
-* @path: src/views/goods/components
-* @Autor:Huhuuuu
-* @LastEditors: Huhuuuu
-* Date: 2022-04-24 20:17
-* Update: 2022-04-24 20:17
-* IDE:WebStorm
-*/
-
 <template>
   <div class="goods-tabs">
     <nav>
-      <a :class="{active:activeName==='detali'}" @click="clickTab('detali')" href="javascript:;">商品详情</a>
-      <a :class="{active:activeName==='comment'}" @click="clickTab('comment')"
-         href="javascript:;">商品评价<span>({{goods.commentCount}})</span></a>
+      <a :class="{ active: activeName === 'detali' }" @click="clickTab('detali')" href="javascript:;">商品详情</a>
+      <a :class="{ active: activeName === 'comment' }" @click="clickTab('comment')"
+        href="javascript:;">商品评价<span>({{ goods.commentCount }})</span></a>
     </nav>
     <!-- 切换内容的地方 -->
-    <component v-if="goods" :is="'goods-'+activeName" :goods="goods"/>
+    <component v-if="goods" :is="'goods-' + activeName" :goods="goods" />
   </div>
 </template>
-
-
 <script>
-import GoodsDetali from "./goods-detail"
-import GoodsComment from "./goods-comment"
+import GoodsDetali from './goods-detail'
+import GoodsComment from './goods-comment'
 export default {
   components: {
     GoodsDetali,
     GoodsComment
-  },
+  }
 }
 </script>
-
-
 <script setup>
-import { ref,inject } from "vue"
-const activeName = ref("detali")
-const clickTab = (name => {
+import { ref, inject } from 'vue'
+const activeName = ref('detali')
+const clickTab = name => {
   activeName.value = name
-})
+}
 const goods = inject('goods')
 </script>
-
-
 <style lang="less" scoped>
 .goods-tabs {
   min-height: 600px;
@@ -66,7 +59,7 @@ const goods = inject('goods')
       font-size: 18px;
       position: relative;
 
-      > span {
+      >span {
         color: @priceColor;
         font-size: 16px;
         margin-left: 10px;

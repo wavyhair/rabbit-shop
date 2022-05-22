@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:30:19
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:30:42
+ * @Description: desc
+ */
 <template>
   <p class="g-name">{{goods.name}}</p>
   <p class="g-desc">{{goods.desc}}</p>
@@ -28,8 +35,6 @@
     </dl>
   </div>
 </template>
-
-
 <script setup>
 import { ref } from 'vue'
 const props = defineProps({
@@ -50,11 +55,11 @@ if (props.goods.userAddresses) {
     provinceCode.value = deafultAddr.provinceCode
     cityCode.value = deafultAddr.cityCode
     countyCode.value = deafultAddr.countyCode
-    fullLocation.value = defaultAddr.fullLocation
+    fullLocation.value = deafultAddr.fullLocation
   }
 }
 // 选择城市
-const changeCity = (result)=>{
+const changeCity = (result) => {
   provinceCode.value = result.provinceCode
   cityCode.value = result.cityCode
   countyCode.value = result.countyCode

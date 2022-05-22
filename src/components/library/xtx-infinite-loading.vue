@@ -1,3 +1,10 @@
+/*
+ * @Author: jiea
+ * @Date: 2022-05-22 18:38:13
+ * @LastEditors: jiea
+ * @LastEditTime: 2022-05-22 18:38:13
+ * @Description: desc
+ */
 <template>
     <div class="xtx-infinite-loading" ref="container">
         <div class="loading" v-if="loading">
@@ -15,29 +22,29 @@
 import { ref } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 const props = defineProps({
-    loading: {
-        type: Boolean,
-        default: false
-    },
-    finished: {
-        type: Boolean,
-        default: false
-    }
+  loading: {
+    type: Boolean,
+    default: false
+  },
+  finished: {
+    type: Boolean,
+    default: false
+  }
 })
 const emit = defineEmits(['infinite'])
 const container = ref(null)
 useIntersectionObserver(
-    container,
-    ([{ isIntersecting }], dom) => {
-        if (isIntersecting) {
-            if (!props.loading  && !props.finished  ) {
-                emit('infinite')
-            }
-        }
-    },
-    {
-        threshold: 0
+  container,
+  ([{ isIntersecting }], dom) => {
+    if (isIntersecting) {
+      if (!props.loading && !props.finished) {
+        emit('infinite')
+      }
     }
+  },
+  {
+    threshold: 0
+  }
 )
 </script>
 
