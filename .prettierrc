@@ -1,6 +1,5 @@
 {
     "semi": false,
-    "prettier.tabWidth": 2,
     "arrowParens": "avoid",
     "singleQuote": true,
     "requirePragma": true
