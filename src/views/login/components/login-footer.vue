@@ -3,9 +3,9 @@
 * @Autor:jiea
 * @LastEditors: jiea
 * Date: 2022-05-05 20:29
-* @LastEditTime: 2022-05-10 20:01:58
+* @LastEditTime: 2022-05-22 08:12:53
 * IDE:WebStorm
-* @Description: ...
+* @Description: 登录页面底部
 */
 <template>
   <footer class="login-footer">

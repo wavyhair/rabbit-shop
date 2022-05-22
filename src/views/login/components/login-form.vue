@@ -3,64 +3,67 @@
 * @Autor:jiea
 * @LastEditors: jiea
 * Date: 2022-05-05 20:49
-* @LastEditTime: 2022-05-10 20:12:54
+* @LastEditTime: 2022-05-22 08:48:23
 * IDE:WebStorm
-* @Description: ...
+* @Description: 登录表单
 */
 <template>
   <div class="account-box">
     <div class="toggle">
-      <a @click="isMsgLogin=false" href="javascript:;" v-if="isMsgLogin">
+      <a @click="isMsgLogin = false" href="javascript:;" v-if="isMsgLogin">
         <i class="iconfont icon-user"></i> 使用账号登录
       </a>
-      <a @click="isMsgLogin=true" href="javascript:;" v-else>
+      <a @click="isMsgLogin = true" href="javascript:;" v-else>
         <i class="iconfont icon-msg"></i> 使用短信登录
       </a>
     </div>
-    <VeeForm ref="veeForm" class="form" :validation-schema="schema" v-slot="{errors}" autocapitalize="off" >
+    <VeeForm ref="veeForm" class="form" :validation-schema="schema" v-slot="{ errors }" autocapitalize="off">
       <template v-if="!isMsgLogin">
         <div class="form-item">
           <div class="input">
             <i class="iconfont icon-user"></i>
-            <Field  v-model="form.account" :class="{error:errors.account}" name="account"  type="text" placeholder="请输入用户名或手机号"/>
+            <Field v-model="form.account" :class="{ error: errors.account }" name="account" type="text"
+              placeholder="请输入用户名或手机号" />
           </div>
-           <div v-if="errors.account" class="error"><i class="iconfont icon-warning" />{{errors.account}}</div>
+          <div v-if="errors.account" class="error"><i class="iconfont icon-warning" />{{ errors.account }}</div>
         </div>
         <div class="form-item">
           <div class="input">
             <i class="iconfont icon-lock"></i>
-            <Field  v-model="form.password" :class="{error:errors.password}" name="password" type="password" placeholder="请输入密码"/>
+            <Field v-model="form.password" :class="{ error: errors.password }" name="password" type="password"
+              placeholder="请输入密码" />
           </div>
-          <div v-if="errors.password" class="error"><i class="iconfont icon-warning" />{{errors.password}}</div>
+          <div v-if="errors.password" class="error"><i class="iconfont icon-warning" />{{ errors.password }}</div>
         </div>
       </template>
       <template v-else>
         <div class="form-item">
           <div class="input">
             <i class="iconfont icon-user"></i>
-            <Field  v-model="form.mobile" :class="{error:errors.mobile}" name="mobile" type="text" placeholder="请输入手机号"/>
+            <Field v-model="form.mobile" :class="{ error: errors.mobile }" name="mobile" type="text"
+              placeholder="请输入手机号" />
           </div>
-          <div v-if="errors.mobile" class="error"><i class="iconfont icon-warning" />{{errors.mobile}}</div>
+          <div v-if="errors.mobile" class="error"><i class="iconfont icon-warning" />{{ errors.mobile }}</div>
         </div>
         <div class="form-item">
           <div class="input">
             <i class="iconfont icon-code"></i>
-            <Field  v-model="form.code" name="code" type="password" placeholder="请输入验证码"/>
-            <span class="code">发送验证码</span>
+            <Field v-model="form.code" name="code" type="password" placeholder="请输入验证码" />
+            <span class="code" @click="send">{{ time === 0 ? '发送验证码' : `${time}秒后发送` }}</span>
           </div>
-          <div v-if="errors.code" class="error"><i class="iconfont icon-warning" />{{errors.code}}</div>
+          <div v-if="errors.code" class="error"><i class="iconfont icon-warning" />{{ errors.code }}</div>
         </div>
       </template>
       <div class="form-item">
         <div class="agree">
-<!--          <XtxCheckBox v-model="form.isAgree"/>-->
-          <Field as="XtxCheckBox" v-model="form.isAgree" name="isAgree"/>
+          <!--          <XtxCheckBox v-model="form.isAgree"/>-->
+          <Field as="XtxCheckBox" v-model="form.isAgree" name="isAgree" />
           <span>我已同意</span>
           <a href="javascript:;">《隐私条款》</a>
           <span>和</span>
           <a href="javascript:;">《服务条款》</a>
         </div>
-        <div v-if="errors.isAgree" class="error"><i class="iconfont icon-warning" />{{errors.isAgree}}</div>
+        <div v-if="errors.isAgree" class="error"><i class="iconfont icon-warning" />{{ errors.isAgree }}</div>
       </div>
       <a href="javascript:;" class="btn" @click="login">登录</a>
     </VeeForm>
@@ -77,7 +80,14 @@
 <script setup>
 import { Form as VeeForm, Field } from 'vee-validate'
 import mySchema from '@/utils/vee-validateschema'
-import { ref, reactive, watch } from 'vue'
+import { ref, reactive, watch, onUnmounted } from 'vue'
+import { userAccountLogin, userMobileLoginMsg, userMobileLogin } from '@/api/user'
+import store from '@/store'
+import Message from '@/components/library/message'
+import { useRoute, useRouter } from 'vue-router'
+import { useIntervalFn } from '@vueuse/shared'
+const router = useRouter()
+const route = useRoute()
 // 是否短信登录
 const isMsgLogin = ref(false)
 // 表单实例
@@ -97,7 +107,7 @@ const form = reactive({
  * 3.定义 Field 的 name 属性指定的校验属性规则 Form 的 validation-schema 接受好的定义规则 规则是对象
  */
 const schema = {
-//  校验函数规则 返回 true 就是校验成功 返回一个字符串就是失败 字符串就是错误提示
+  //  校验函数规则 返回 true 就是校验成功 返回一个字符串就是失败 字符串就是错误提示
   account: mySchema.account,
   password: mySchema.password,
   mobile: mySchema.mobile,
@@ -117,9 +127,70 @@ watch(isMsgLogin, () => {
 const login = async () => {
   const valid = await veeForm.value.validate()
   if (valid) {
-    // 登录
+    let data = null
+    try {
+      data = !isMsgLogin.value ? await userAccountLogin(form) : await userMobileLogin(form)
+      const {
+        id,
+        account,
+        nickname,
+        avatar,
+        token,
+        mobile
+      } = data.result
+      store.commit('user/setUser', {
+        id,
+        account,
+        nickname,
+        avatar,
+        token,
+        mobile
+      })
+      Message({
+        type: 'success',
+        text: '登陆成功'
+      })
+      router.push(route.query.redirectUrl || '/')
+    } catch (err) {
+      Message({
+        type: 'error',
+        text: err.response.data.message || '登陆失败'
+      })
+    }
+  }
+}
+/**
+ * pause 暂停 resume 开启
+ * useIntervalFn（回调函数，执行间隔，是否立即开启）
+ *  */
+const time = ref(0)
+const { pause, resume } = useIntervalFn(() => {
+  time.value--
+  if (time.value <= 0) {
+    pause()
+  }
+}, 1000, false)
+onUnmounted(() => {
+  pause()
+})
+// 发送验证码
+const send = async () => {
+  const valid = mySchema.mobile(form.mobile)
+  if (valid === true) {
+    // 通过
+    // 没有倒计时才可以发送验证码
+    if (time.value === 0) {
+      await userMobileLoginMsg(form.mobile)
+      Message({
+        type: 'success',
+        text: '发送成功'
+      })
+      time.value = 60
+      resume()
+    }
   } else {
-    throw Error('no')
+    // 校验失败 使用 vee 的错误函数显示错误信息 setFieldError(字段，错误信息)
+    veeForm.value.setFieldError('mobile', valid)
   }
 }
 </script>
@@ -150,7 +221,7 @@ const login = async () => {
         position: relative;
         height: 36px;
 
-        > i {
+        >i {
           width: 34px;
           height: 34px;
           background: #cfcdcd;
@@ -174,7 +245,8 @@ const login = async () => {
             border-color: @priceColor;
           }
 
-          &.active, &:focus {
+          &.active,
+          &:focus {
             border-color: @xtxColor;
           }
         }
@@ -194,7 +266,7 @@ const login = async () => {
         }
       }
 
-      > .error {
+      >.error {
         position: absolute;
         font-size: 12px;
         line-height: 28px;
