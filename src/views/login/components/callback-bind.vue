@@ -2,7 +2,7 @@
  * @Author: chenjie
  * @Date: 2022-05-23 20:00:03
  * @LastEditors: chenjie
- * @LastEditTime: 2022-05-26 22:51:30
+ * @LastEditTime: 2022-05-27 21:54:55
  * @FilePath: \rabbit-shop\src\views\login\components\callback-bind.vue
  * @Description: 绑定手机页面
  * Copyright (c) 2022 by chenjie, All Rights Reserved.

@@ -2,7 +2,7 @@
  * @Author: chenjie
  * @Date: 2022-05-23 19:59:13
  * @LastEditors: chenjie
- * @LastEditTime: 2022-05-26 22:52:55
+ * @LastEditTime: 2022-05-27 21:54:24
  * @FilePath: \rabbit-shop\src\views\login\callback\index.vue
  * @Description: 联合登录页面
  * Copyright (c) 2022 by chenjie, All Rights Reserved.
@@ -89,6 +89,7 @@ if (QC.Login.check()) {
     }).catch(() => {
       // 登录失败说明没有当前 qq 没有和小兔仙绑定过(有账号未绑定QQ,没有账号未绑定QQ)
       isBind.value = false
+      unionId.value = openId
     })
   })
 }

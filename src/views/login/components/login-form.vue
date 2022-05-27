@@ -1,17 +1,19 @@
-/*
-* @path: src/views/login/components
-* @Autor:jiea
-* @LastEditors: jiea
-* Date: 2022-05-05 20:49
-* @LastEditTime: 2022-05-22 08:48:23
-* IDE:WebStorm
-* @Description: 登录表单
-*/
+<!--
+ * @Author: chenjie
+ * @Date: 2022-05-22 20:56:42
+ * @LastEditors: chenjie
+ * @LastEditTime: 2022-05-22 23:46:38
+ * @FilePath: \rabbit-shop\src\views\login\components\login-form.vue
+ * @Description: 登录表单
+ * Copyright (c) 2022 by chenjie, All Rights Reserved.
+-->
+
 <template>
   <div class="account-box">
     <div class="toggle">
       <a @click="isMsgLogin = false" href="javascript:;" v-if="isMsgLogin">
-        <i class="iconfont icon-user"></i> 使用账号登录
+        <i class="iconfont icon-user"
+        ></i> 使用账号登录
       </a>
       <a @click="isMsgLogin = true" href="javascript:;" v-else>
         <i class="iconfont icon-msg"></i> 使用短信登录

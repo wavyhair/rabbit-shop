@@ -1,12 +1,13 @@
-/*
-* @path: src/views/login/components
-* @Autor:jiea
-* @LastEditors: jiea
-* Date: 2022-05-05 20:28
-* @LastEditTime: 2022-05-22 08:12:18
-* IDE:WebStorm
-* @Description: 登录页面底部
-*/
+<!--
+ * @Author: chenjie
+ * @Date: 2022-05-22 20:56:42
+ * @LastEditors: chenjie
+ * @LastEditTime: 2022-05-23 20:19:59
+ * @FilePath: \rabbit-shop\src\views\login\components\login-header.vue
+ * @Description: 登录页面头部
+ * Copyright (c) 2022 by chenjie, All Rights Reserved.
+-->
+
 <template>
   <header class="login-header">
     <div class="container">
